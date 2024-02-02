@@ -1,0 +1,42 @@
+config:
+  credentials: []
+  project_repos:
+    github.com/EOSC-synergy/sqaaas-tooling:
+      branch: release/2.0.0
+      repo: https://github.com/EOSC-synergy/sqaaas-tooling
+    github.com/deephdc/DEEP-OC-generic-dev:
+      branch: master
+      repo: https://github.com/deephdc/DEEP-OC-generic-dev
+environment:
+  JPL_DOCKERFORCEBUILD: enabled
+  JPL_KEEPGOING: enabled
+sqa_criteria:
+  QC.Acc:
+    repos:
+      github.com/deephdc/DEEP-OC-generic-dev git:
+        commands:
+        - /usr/bin/env sh .sqa/script.woolly-cinnamon-lion.sh
+        container: qc.acc_leaky-cornflower-cattle
+  QC.Doc:
+    repos:
+      github.com/deephdc/DEEP-OC-generic-dev find_doc_files.py:
+        commands:
+        - /usr/bin/env sh .sqa/script.wiggy-magenta-bison.sh
+        container: qc.doc_lanky-cream-eel
+      github.com/deephdc/DEEP-OC-generic-dev git:
+        commands:
+        - /usr/bin/env sh .sqa/script.baggy-lemon-mayfly.sh
+        container: qc.doc_skimpy-turquoise-earwig
+  QC.Lic:
+    repos:
+      github.com/deephdc/DEEP-OC-generic-dev licensee:
+        commands:
+        - /usr/bin/env sh .sqa/script.gloppy-burgundy-starfish.sh
+        container: qc.lic_cheeky-maroon-cuttlefish
+  QC.Ver:
+    repos:
+      github.com/deephdc/DEEP-OC-generic-dev get_git_tags.py:
+        commands:
+        - /usr/bin/env sh .sqa/script.cranky-cerise-bee.sh
+        container: qc.ver_shaggy-amaranth-squirt
+timeout: 5400
