@@ -15,28 +15,28 @@ sqa_criteria:
     repos:
       github.com/deephdc/DEEP-OC-generic-dev git:
         commands:
-        - /usr/bin/env sh .sqa/script.woolly-cinnamon-lion.sh
-        container: qc.acc_leaky-cornflower-cattle
+        - /usr/bin/env sh .sqa/script.skimpy-smalt-dalmatian.sh
+        container: qc.acc_muzzy-eggplant-squid
   QC.Doc:
     repos:
       github.com/deephdc/DEEP-OC-generic-dev find_doc_files.py:
         commands:
-        - /usr/bin/env sh .sqa/script.wiggy-magenta-bison.sh
-        container: qc.doc_lanky-cream-eel
+        - /usr/bin/env sh .sqa/script.lumpy-zucchini-moth.sh
+        container: qc.doc_tacky-ultramarine-emu
       github.com/deephdc/DEEP-OC-generic-dev git:
         commands:
-        - /usr/bin/env sh .sqa/script.baggy-lemon-mayfly.sh
-        container: qc.doc_skimpy-turquoise-earwig
+        - /usr/bin/env sh .sqa/script.surly-cream-lionfish.sh
+        container: qc.doc_sunny-firebrick-monster
   QC.Lic:
     repos:
       github.com/deephdc/DEEP-OC-generic-dev licensee:
         commands:
-        - /usr/bin/env sh .sqa/script.gloppy-burgundy-starfish.sh
-        container: qc.lic_cheeky-maroon-cuttlefish
+        - /usr/bin/env sh .sqa/script.smelly-smalt-owl.sh
+        container: qc.lic_craggy-peach-orangutan
   QC.Ver:
     repos:
       github.com/deephdc/DEEP-OC-generic-dev get_git_tags.py:
         commands:
-        - /usr/bin/env sh .sqa/script.cranky-cerise-bee.sh
-        container: qc.ver_shaggy-amaranth-squirt
+        - /usr/bin/env sh .sqa/script.stuffy-khaki-whale.sh
+        container: qc.ver_gloppy-wheat-armadillo
 timeout: 5400
