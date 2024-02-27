@@ -8,7 +8,7 @@
             "url": "https://github.com/deephdc/DEEP-OC-generic-dev",
             "name": "deephdc/DEEP-OC-generic-dev",
             "tag": "master",
-            "commit_id": "c248d2780caf548254e1d6dc29a44be0540eeffd",
+            "commit_id": "1263795b6f681be7ff6ca59595378f15034c4db1",
             "is_main_repo": true,
             "avatar_url": "https://avatars.githubusercontent.com/u/34572663?v=4",
             "description": null,
@@ -52,7 +52,7 @@
                                         "git rev-parse --is-inside-work-tree"
                                     ],
                                     "stdout_text": "true",
-                                    "url": "https://jenkins.eosc-synergy.eu/job/eosc-synergy-org/job/DEEP-OC-generic-dev.assess.sqaaas/job/master/4/execution/node/34/log?consoleFull"
+                                    "url": "https://jenkins.eosc-synergy.eu/job/eosc-synergy-org/job/DEEP-OC-generic-dev.assess.sqaaas/job/master/8/execution/node/34/log?consoleFull"
                                 },
                                 "level": "REQUIRED",
                                 "build_repo": "https://github.com/eosc-synergy/DEEP-OC-generic-dev.assess.sqaaas"
@@ -104,7 +104,7 @@
                                         "find_doc_files.py --file_type all"
                                     ],
                                     "stdout_text": "{\"README\": [{\"file_name\": \"README.md\", \"size\": 5255}], \"CODE_OF_CONDUCT\": [], \"CONTRIBUTING\": []}",
-                                    "url": "https://jenkins.eosc-synergy.eu/job/eosc-synergy-org/job/DEEP-OC-generic-dev.assess.sqaaas/job/master/4/execution/node/43/log?consoleFull"
+                                    "url": "https://jenkins.eosc-synergy.eu/job/eosc-synergy-org/job/DEEP-OC-generic-dev.assess.sqaaas/job/master/8/execution/node/43/log?consoleFull"
                                 },
                                 "level": "REQUIRED",
                                 "build_repo": "https://github.com/eosc-synergy/DEEP-OC-generic-dev.assess.sqaaas"
@@ -155,7 +155,7 @@
                                         "find_doc_files.py --file_type all"
                                     ],
                                     "stdout_text": "{\"README\": [{\"file_name\": \"README.md\", \"size\": 5255}], \"CODE_OF_CONDUCT\": [], \"CONTRIBUTING\": []}",
-                                    "url": "https://jenkins.eosc-synergy.eu/job/eosc-synergy-org/job/DEEP-OC-generic-dev.assess.sqaaas/job/master/4/execution/node/43/log?consoleFull"
+                                    "url": "https://jenkins.eosc-synergy.eu/job/eosc-synergy-org/job/DEEP-OC-generic-dev.assess.sqaaas/job/master/8/execution/node/43/log?consoleFull"
                                 },
                                 "level": "REQUIRED",
                                 "build_repo": "https://github.com/eosc-synergy/DEEP-OC-generic-dev.assess.sqaaas"
@@ -207,7 +207,7 @@
                                         "find_doc_files.py --file_type all"
                                     ],
                                     "stdout_text": "{\"README\": [{\"file_name\": \"README.md\", \"size\": 5255}], \"CODE_OF_CONDUCT\": [], \"CONTRIBUTING\": []}",
-                                    "url": "https://jenkins.eosc-synergy.eu/job/eosc-synergy-org/job/DEEP-OC-generic-dev.assess.sqaaas/job/master/4/execution/node/43/log?consoleFull"
+                                    "url": "https://jenkins.eosc-synergy.eu/job/eosc-synergy-org/job/DEEP-OC-generic-dev.assess.sqaaas/job/master/8/execution/node/43/log?consoleFull"
                                 },
                                 "level": "REQUIRED",
                                 "build_repo": "https://github.com/eosc-synergy/DEEP-OC-generic-dev.assess.sqaaas"
@@ -256,7 +256,7 @@
                                         "git rev-parse --is-inside-work-tree"
                                     ],
                                     "stdout_text": "true",
-                                    "url": "https://jenkins.eosc-synergy.eu/job/eosc-synergy-org/job/DEEP-OC-generic-dev.assess.sqaaas/job/master/4/execution/node/52/log?consoleFull"
+                                    "url": "https://jenkins.eosc-synergy.eu/job/eosc-synergy-org/job/DEEP-OC-generic-dev.assess.sqaaas/job/master/8/execution/node/52/log?consoleFull"
                                 },
                                 "level": "REQUIRED",
                                 "build_repo": "https://github.com/eosc-synergy/DEEP-OC-generic-dev.assess.sqaaas"
@@ -270,11 +270,227 @@
                         }
                     ],
                     "valid": true
+                },
+                "QC.Doc02.X": {
+                    "description": "Are docs following a style for the Markdown markup language?",
+                    "requirement_level": "MAY",
+                    "hint": "When using a docs-as-code approach, the style of the markup language is being checked. SQAaaS relies on <a href=\"https://github.com/markdownlint/markdownlint/\" target=\"_blank\">markdownlint</a> for Markdown files and <a href=\"https://github.com/twolfson/restructuredtext-lint/\" target=\"_blank\">restructuredtext-lint</a> for reStructuredText",
+                    "evidence": [
+                        {
+                            "valid": false,
+                            "message": "Docs are not fully compliant with markdownlint standard",
+                            "plugin": {
+                                "name": "report2sqaaas-plugin-markdownlint",
+                                "version": "1.2.0"
+                            },
+                            "tool": {
+                                "name": "markdownlint",
+                                "lang": "Markdown",
+                                "version": "0.11.0",
+                                "docker": {
+                                    "dockerfile": "QC.Doc/markdownlint/Dockerfile",
+                                    "reviewed": "1970-01-01"
+                                },
+                                "ci": {
+                                    "name": "QC.Doc github.com/deephdc/DEEP-OC-generic-dev markdownlint",
+                                    "status": "FAILED",
+                                    "stdout_command": [
+                                        "mdl --json ."
+                                    ],
+                                    "stdout_text": "[{\"filename\":\"./INFO.md\",\"line\":57,\"rule\":\"MD007\",\"aliases\":[\"ul-indent\"],\"description\":\"Unordered list indentation\"},{\"filename\":\"./INFO.md\",\"line\":24,\"rule\":\"MD009\",\"aliases\":[\"no-trailing-spaces\"],\"description\":\"Trailing spaces\"},{\"filename\":\"./INFO.md\",\"line\":47,\"rule\":\"MD009\",\"aliases\":[\"no-trailing-spaces\"],\"description\":\"Trailing spaces\"},{\"filename\":\"./INFO.md\",\"line\":48,\"rule\":\"MD009\",\"aliases\":[\"no-trailing-spaces\"],\"description\":\"Trailing spaces\"},{\"filename\":\"./INFO.md\",\"line\":68,\"rule\":\"MD009\",\"aliases\":[\"no-trailing-spaces\"],\"description\":\"Trailing spaces\"},{\"filename\":\"./INFO.md\",\"line\":73,\"rule\":\"MD009\",\"aliases\":[\"no-trailing-spaces\"],\"description\":\"Trailing spaces\"},{\"filename\":\"./INFO.md\",\"line\":77,\"rule\":\"MD009\",\"aliases\":[\"no-trailing-spaces\"],\"description\":\"Trailing spaces\"},{\"filename\":\"./INFO.md\",\"line\":108,\"rule\":\"MD009\",\"aliases\":[\"no-trailing-spaces\"],\"description\":\"Trailing spaces\"},{\"filename\":\"./INFO.md\",\"line\":51,\"rule\":\"MD012\",\"aliases\":[\"no-multiple-blanks\"],\"description\":\"Multiple consecutive blank lines\"},{\"filename\":\"./INFO.md\",\"line\":2,\"rule\":\"MD013\",\"aliases\":[\"line-length\"],\"description\":\"Line length\"},{\"filename\":\"./INFO.md\",\"line\":20,\"rule\":\"MD013\",\"aliases\":[\"line-length\"],\"description\":\"Line length\"},{\"filename\":\"./INFO.md\",\"line\":24,\"rule\":\"MD013\",\"aliases\":[\"line-length\"],\"description\":\"Line length\"},{\"filename\":\"./INFO.md\",\"line\":33,\"rule\":\"MD013\",\"aliases\":[\"line-length\"],\"description\":\"Line length\"},{\"filename\":\"./INFO.md\",\"line\":48,\"rule\":\"MD013\",\"aliases\":[\"line-length\"],\"description\":\"Line length\"},{\"filename\":\"./INFO.md\",\"line\":49,\"rule\":\"MD013\",\"aliases\":[\"line-length\"],\"description\":\"Line length\"},{\"filename\":\"./INFO.md\",\"line\":60,\"rule\":\"MD013\",\"aliases\":[\"line-length\"],\"description\":\"Line length\"},{\"filename\":\"./INFO.md\",\"line\":63,\"rule\":\"MD013\",\"aliases\":[\"line-length\"],\"description\":\"Line length\"},{\"filename\":\"./INFO.md\",\"line\":64,\"rule\":\"MD013\",\"aliases\":[\"line-length\"],\"description\":\"Line length\"},{\"filename\":\"./INFO.md\",\"line\":65,\"rule\":\"MD013\",\"aliases\":[\"line-length\"],\"description\":\"Line length\"},{\"filename\":\"./INFO.md\",\"line\":74,\"rule\":\"MD013\",\"aliases\":[\"line-length\"],\"description\":\"Line length\"},{\"filename\":\"./INFO.md\",\"line\":75,\"rule\":\"MD013\",\"aliases\":[\"line-length\"],\"description\":\"Line length\"},{\"filename\":\"./INFO.md\",\"line\":78,\"rule\":\"MD013\",\"aliases\":[\"line-length\"],\"description\":\"Line length\"},{\"filename\":\"./INFO.md\",\"line\":81,\"rule\":\"MD013\",\"aliases\":[\"line-length\"],\"description\":\"Line length\"},{\"filename\":\"./INFO.md\",\"line\":82,\"rule\":\"MD013\",\"aliases\":[\"line-length\"],\"description\":\"Line length\"},{\"filename\":\"./INFO.md\",\"line\":83,\"rule\":\"MD013\",\"aliases\":[\"line-length\"],\"description\":\"Line length\"},{\"filename\":\"./INFO.md\",\"line\":96,\"rule\":\"MD013\",\"aliases\":[\"line-length\"],\"description\":\"Line length\"},{\"filename\":\"./INFO.md\",\"line\":98,\"rule\":\"MD013\",\"aliases\":[\"line-length\"],\"description\":\"Line length\"},{\"filename\":\"./INFO.md\",\"line\":103,\"rule\":\"MD013\",\"aliases\":[\"line-length\"],\"description\":\"Line length\"},{\"filename\":\"./INFO.md\",\"line\":105,\"rule\":\"MD013\",\"aliases\":[\"line-length\"],\"description\":\"Line length\"},{\"filename\":\"./INFO.md\",\"line\":108,\"rule\":\"MD013\",\"aliases\":[\"line-length\"],\"description\":\"Line length\"},{\"filename\":\"./INFO.md\",\"line\":26,\"rule\":\"MD014\",\"aliases\":[\"commands-show-output\"],\"description\":\"Dollar signs used before commands without showing output\"},{\"filename\":\"./INFO.md\",\"line\":41,\"rule\":\"MD014\",\"aliases\":[\"commands-show-output\"],\"description\":\"Dollar signs used before commands without showing output\"},{\"filename\":\"./INFO.md\",\"line\":62,\"rule\":\"MD022\",\"aliases\":[\"blanks-around-headers\"],\"description\":\"Headers should be surrounded by blank lines\"},{\"filename\":\"./INFO.md\",\"line\":67,\"rule\":\"MD022\",\"aliases\":[\"blanks-around-headers\"],\"description\":\"Headers should be surrounded by blank lines\"},{\"filename\":\"./INFO.md\",\"line\":48,\"rule\":\"MD032\",\"aliases\":[\"blanks-around-lists\"],\"description\":\"Lists should be surrounded by blank lines\"},{\"filename\":\"./INFO.md\",\"line\":63,\"rule\":\"MD032\",\"aliases\":[\"blanks-around-lists\"],\"description\":\"Lists should be surrounded by blank lines\"},{\"filename\":\"./INFO.md\",\"line\":69,\"rule\":\"MD032\",\"aliases\":[\"blanks-around-lists\"],\"description\":\"Lists should be surrounded by blank lines\"},{\"filename\":\"./INFO.md\",\"line\":74,\"rule\":\"MD032\",\"aliases\":[\"blanks-around-lists\"],\"description\":\"Lists should be surrounded by blank lines\"},{\"filename\":\"./INFO.md\",\"line\":78,\"rule\":\"MD032\",\"aliases\":[\"blanks-around-lists\"],\"description\":\"Lists should be surrounded by blank lines\"},{\"filename\":\"./INFO.md\",\"line\":81,\"rule\":\"MD032\",\"aliases\":[\"blanks-around-lists\"],\"description\":\"Lists should be surrounded by blank lines\"},{\"filename\":\"./INFO.md\",\"line\":86,\"rule\":\"MD032\",\"aliases\":[\"blanks-around-lists\"],\"description\":\"Lists should be surrounded by blank lines\"},{\"filename\":\"./INFO.md\",\"line\":91,\"rule\":\"MD032\",\"aliases\":[\"blanks-around-lists\"],\"description\":\"Lists should be surrounded by blank lines\"},{\"filename\":\"./INFO.md\",\"line\":1,\"rule\":\"MD033\",\"aliases\":[\"no-inline-html\"],\"description\":\"Inline HTML\"},{\"filename\":\"./INFO.md\",\"line\":2,\"rule\":\"MD033\",\"aliases\":[\"no-inline-html\"],\"description\":\"Inline HTML\"},{\"filename\":\"./README.md\",\"line\":119,\"rule\":\"MD009\",\"aliases\":[\"no-trailing-spaces\"],\"description\":\"Trailing spaces\"},{\"filename\":\"./README.md\",\"line\":120,\"rule\":\"MD009\",\"aliases\":[\"no-trailing-spaces\"],\"description\":\"Trailing spaces\"},{\"filename\":\"./README.md\",\"line\":13,\"rule\":\"MD012\",\"aliases\":[\"no-multiple-blanks\"],\"description\":\"Multiple consecutive blank lines\"},{\"filename\":\"./README.md\",\"line\":32,\"rule\":\"MD012\",\"aliases\":[\"no-multiple-blanks\"],\"description\":\"Multiple consecutive blank lines\"},{\"filename\":\"./README.md\",\"line\":79,\"rule\":\"MD012\",\"aliases\":[\"no-multiple-blanks\"],\"description\":\"Multiple consecutive blank lines\"},{\"filename\":\"./README.md\",\"line\":116,\"rule\":\"MD012\",\"aliases\":[\"no-multiple-blanks\"],\"description\":\"Multiple consecutive blank lines\"},{\"filename\":\"./README.md\",\"line\":2,\"rule\":\"MD013\",\"aliases\":[\"line-length\"],\"description\":\"Line length\"},{\"filename\":\"./README.md\",\"line\":9,\"rule\":\"MD013\",\"aliases\":[\"line-length\"],\"description\":\"Line length\"},{\"filename\":\"./README.md\",\"line\":11,\"rule\":\"MD013\",\"aliases\":[\"line-length\"],\"description\":\"Line length\"},{\"filename\":\"./README.md\",\"line\":37,\"rule\":\"MD013\",\"aliases\":[\"line-length\"],\"description\":\"Line length\"},{\"filename\":\"./README.md\",\"line\":43,\"rule\":\"MD013\",\"aliases\":[\"line-length\"],\"description\":\"Line length\"},{\"filename\":\"./README.md\",\"line\":45,\"rule\":\"MD013\",\"aliases\":[\"line-length\"],\"description\":\"Line length\"},{\"filename\":\"./README.md\",\"line\":47,\"rule\":\"MD013\",\"aliases\":[\"line-length\"],\"description\":\"Line length\"},{\"filename\":\"./README.md\",\"line\":55,\"rule\":\"MD013\",\"aliases\":[\"line-length\"],\"description\":\"Line length\"},{\"filename\":\"./README.md\",\"line\":58,\"rule\":\"MD013\",\"aliases\":[\"line-length\"],\"description\":\"Line length\"},{\"filename\":\"./README.md\",\"line\":61,\"rule\":\"MD013\",\"aliases\":[\"line-length\"],\"description\":\"Line length\"},{\"filename\":\"./README.md\",\"line\":64,\"rule\":\"MD013\",\"aliases\":[\"line-length\"],\"description\":\"Line length\"},{\"filename\":\"./README.md\",\"line\":69,\"rule\":\"MD013\",\"aliases\":[\"line-length\"],\"description\":\"Line length\"},{\"filename\":\"./README.md\",\"line\":73,\"rule\":\"MD013\",\"aliases\":[\"line-length\"],\"description\":\"Line length\"},{\"filename\":\"./README.md\",\"line\":75,\"rule\":\"MD013\",\"aliases\":[\"line-length\"],\"description\":\"Line length\"},{\"filename\":\"./README.md\",\"line\":77,\"rule\":\"MD013\",\"aliases\":[\"line-length\"],\"description\":\"Line length\"},{\"filename\":\"./README.md\",\"line\":102,\"rule\":\"MD013\",\"aliases\":[\"line-length\"],\"description\":\"Line length\"},{\"filename\":\"./README.md\",\"line\":111,\"rule\":\"MD013\",\"aliases\":[\"line-length\"],\"description\":\"Line length\"},{\"filename\":\"./README.md\",\"line\":114,\"rule\":\"MD013\",\"aliases\":[\"line-length\"],\"description\":\"Line length\"},{\"filename\":\"./README.md\",\"line\":119,\"rule\":\"MD013\",\"aliases\":[\"line-length\"],\"description\":\"Line length\"},{\"filename\":\"./README.md\",\"line\":120,\"rule\":\"MD013\",\"aliases\":[\"line-length\"],\"description\":\"Line length\"},{\"filename\":\"./README.md\",\"line\":126,\"rule\":\"MD013\",\"aliases\":[\"line-length\"],\"description\":\"Line length\"},{\"filename\":\"./README.md\",\"line\":129,\"rule\":\"MD013\",\"aliases\":[\"line-length\"],\"description\":\"Line length\"},{\"filename\":\"./README.md\",\"line\":39,\"rule\":\"MD014\",\"aliases\":[\"commands-show-output\"],\"description\":\"Dollar signs used before commands without showing output\"},{\"filename\":\"./README.md\",\"line\":49,\"rule\":\"MD014\",\"aliases\":[\"commands-show-output\"],\"description\":\"Dollar signs used before commands without showing output\"},{\"filename\":\"./README.md\",\"line\":57,\"rule\":\"MD014\",\"aliases\":[\"commands-show-output\"],\"description\":\"Dollar signs used before commands without showing output\"},{\"filename\":\"./README.md\",\"line\":63,\"rule\":\"MD014\",\"aliases\":[\"commands-show-output\"],\"description\":\"Dollar signs used before commands without showing output\"},{\"filename\":\"./README.md\",\"line\":109,\"rule\":\"MD014\",\"aliases\":[\"commands-show-output\"],\"description\":\"Dollar signs used before commands without showing output\"},{\"filename\":\"./README.md\",\"line\":125,\"rule\":\"MD014\",\"aliases\":[\"commands-show-output\"],\"description\":\"Dollar signs used before commands without showing output\"},{\"filename\":\"./README.md\",\"line\":93,\"rule\":\"MD029\",\"aliases\":[\"ol-prefix\"],\"description\":\"Ordered list item prefix\"},{\"filename\":\"./README.md\",\"line\":15,\"rule\":\"MD032\",\"aliases\":[\"blanks-around-lists\"],\"description\":\"Lists should be surrounded by blank lines\"},{\"filename\":\"./README.md\",\"line\":1,\"rule\":\"MD033\",\"aliases\":[\"no-inline-html\"],\"description\":\"Inline HTML\"},{\"filename\":\"./README.md\",\"line\":2,\"rule\":\"MD033\",\"aliases\":[\"no-inline-html\"],\"description\":\"Inline HTML\"},{\"filename\":\"./README.md\",\"line\":11,\"rule\":\"MD034\",\"aliases\":[\"no-bare-urls\"],\"description\":\"Bare URL used\"},{\"filename\":\"./README.md\",\"line\":45,\"rule\":\"MD034\",\"aliases\":[\"no-bare-urls\"],\"description\":\"Bare URL used\"},{\"filename\":\"./README.md\",\"line\":47,\"rule\":\"MD034\",\"aliases\":[\"no-bare-urls\"],\"description\":\"Bare URL used\"},{\"filename\":\"./README.md\",\"line\":53,\"rule\":\"MD034\",\"aliases\":[\"no-bare-urls\"],\"description\":\"Bare URL used\"},{\"filename\":\"./README.md\",\"line\":75,\"rule\":\"MD034\",\"aliases\":[\"no-bare-urls\"],\"description\":\"Bare URL used\"},{\"filename\":\"./README.md\",\"line\":119,\"rule\":\"MD034\",\"aliases\":[\"no-bare-urls\"],\"description\":\"Bare URL used\"}]",
+                                    "url": "https://jenkins.eosc-synergy.eu/job/eosc-synergy-org/job/DEEP-OC-generic-dev.assess.sqaaas/job/master/8/execution/node/61/log?consoleFull"
+                                },
+                                "level": "RECOMMENDED",
+                                "build_repo": "https://github.com/eosc-synergy/DEEP-OC-generic-dev.assess.sqaaas"
+                            },
+                            "standard": {
+                                "title": "A set of Common Software Quality Assurance Baseline Criteria for Research Projects",
+                                "version": "v4.0",
+                                "url": "https://github.com/indigo-dc/sqa-baseline/releases/tag/v4.0"
+                            },
+                            "data_unstructured": {
+                                "./INFO.md": {
+                                    "MD007": {
+                                        "description": "Unordered list indentation",
+                                        "line": [
+                                            57
+                                        ]
+                                    },
+                                    "MD009": {
+                                        "description": "Trailing spaces",
+                                        "line": [
+                                            24,
+                                            47,
+                                            48,
+                                            68,
+                                            73,
+                                            77,
+                                            108
+                                        ]
+                                    },
+                                    "MD012": {
+                                        "description": "Multiple consecutive blank lines",
+                                        "line": [
+                                            51
+                                        ]
+                                    },
+                                    "MD013": {
+                                        "description": "Line length",
+                                        "line": [
+                                            2,
+                                            20,
+                                            24,
+                                            33,
+                                            48,
+                                            49,
+                                            60,
+                                            63,
+                                            64,
+                                            65,
+                                            74,
+                                            75,
+                                            78,
+                                            81,
+                                            82,
+                                            83,
+                                            96,
+                                            98,
+                                            103,
+                                            105,
+                                            108
+                                        ]
+                                    },
+                                    "MD014": {
+                                        "description": "Dollar signs used before commands without showing output",
+                                        "line": [
+                                            26,
+                                            41
+                                        ]
+                                    },
+                                    "MD022": {
+                                        "description": "Headers should be surrounded by blank lines",
+                                        "line": [
+                                            62,
+                                            67
+                                        ]
+                                    },
+                                    "MD032": {
+                                        "description": "Lists should be surrounded by blank lines",
+                                        "line": [
+                                            48,
+                                            63,
+                                            69,
+                                            74,
+                                            78,
+                                            81,
+                                            86,
+                                            91
+                                        ]
+                                    },
+                                    "MD033": {
+                                        "description": "Inline HTML",
+                                        "line": [
+                                            1,
+                                            2
+                                        ]
+                                    }
+                                },
+                                "./README.md": {
+                                    "MD009": {
+                                        "description": "Trailing spaces",
+                                        "line": [
+                                            119,
+                                            120
+                                        ]
+                                    },
+                                    "MD012": {
+                                        "description": "Multiple consecutive blank lines",
+                                        "line": [
+                                            13,
+                                            32,
+                                            79,
+                                            116
+                                        ]
+                                    },
+                                    "MD013": {
+                                        "description": "Line length",
+                                        "line": [
+                                            2,
+                                            9,
+                                            11,
+                                            37,
+                                            43,
+                                            45,
+                                            47,
+                                            55,
+                                            58,
+                                            61,
+                                            64,
+                                            69,
+                                            73,
+                                            75,
+                                            77,
+                                            102,
+                                            111,
+                                            114,
+                                            119,
+                                            120,
+                                            126,
+                                            129
+                                        ]
+                                    },
+                                    "MD014": {
+                                        "description": "Dollar signs used before commands without showing output",
+                                        "line": [
+                                            39,
+                                            49,
+                                            57,
+                                            63,
+                                            109,
+                                            125
+                                        ]
+                                    },
+                                    "MD029": {
+                                        "description": "Ordered list item prefix",
+                                        "line": [
+                                            93
+                                        ]
+                                    },
+                                    "MD032": {
+                                        "description": "Lists should be surrounded by blank lines",
+                                        "line": [
+                                            15
+                                        ]
+                                    },
+                                    "MD033": {
+                                        "description": "Inline HTML",
+                                        "line": [
+                                            1,
+                                            2
+                                        ]
+                                    },
+                                    "MD034": {
+                                        "description": "Bare URL used",
+                                        "line": [
+                                            11,
+                                            45,
+                                            47,
+                                            53,
+                                            75,
+                                            119
+                                        ]
+                                    }
+                                }
+                            }
+                        }
+                    ],
+                    "valid": false,
+                    "required_for_next_level_badge": false
                 }
             },
             "coverage": {
-                "percentage": 50,
-                "total_subcriteria": 4,
+                "percentage": 40,
+                "total_subcriteria": 5,
                 "success_subcriteria": 2
             }
         },
@@ -308,7 +524,7 @@
                                         "licensee detect . --confidence 60 --json"
                                     ],
                                     "stdout_text": "{\"licenses\":[{\"key\":\"mit\",\"spdx_id\":\"MIT\",\"meta\":{\"title\":\"MIT License\",\"source\":\"https://spdx.org/licenses/MIT.html\",\"description\":\"A short and simple permissive license with conditions only requiring preservation of copyright and license notices. Licensed works, modifications, and larger works may be distributed under different terms and without source code.\",\"how\":\"Create a text file (typically named LICENSE or LICENSE.txt) in the root of your source code and copy the text of the license into the file. Replace [year] with the current year and [fullname] with the name (or names) of the copyright holders.\",\"using\":{\"Babel\":\"https://github.com/babel/babel/blob/master/LICENSE\",\".NET\":\"https://github.com/dotnet/runtime/blob/main/LICENSE.TXT\",\"Rails\":\"https://github.com/rails/rails/blob/master/MIT-LICENSE\"},\"featured\":true,\"hidden\":false,\"nickname\":null,\"note\":null},\"url\":\"http://choosealicense.com/licenses/mit/\",\"rules\":{\"permissions\":[{\"tag\":\"commercial-use\",\"label\":\"Commercial use\",\"description\":\"The licensed material and derivatives may be used for commercial purposes.\"},{\"tag\":\"modifications\",\"label\":\"Modification\",\"description\":\"The licensed material may be modified.\"},{\"tag\":\"distribution\",\"label\":\"Distribution\",\"description\":\"The licensed material may be distributed.\"},{\"tag\":\"private-use\",\"label\":\"Private use\",\"description\":\"The licensed material may be used and modified in private.\"}],\"conditions\":[{\"tag\":\"include-copyright\",\"label\":\"License and copyright notice\",\"description\":\"A copy of the license and copyright notice must be included with the licensed material.\"}],\"limitations\":[{\"tag\":\"liability\",\"label\":\"Liability\",\"description\":\"This license includes a limitation of liability.\"},{\"tag\":\"warranty\",\"label\":\"Warranty\",\"description\":\"This license explicitly states that it does NOT provide any warranty.\"}]},\"fields\":[{\"name\":\"year\",\"description\":\"The current year\"},{\"name\":\"fullname\",\"description\":\"The full name or username of the repository owner\"}],\"other\":false,\"gpl\":false,\"lgpl\":false,\"cc\":false}],\"matched_files\":[{\"filename\":\"LICENSE\",\"content\":\"\\nThe MIT License (MIT)\\nCopyright (c) 2018, V.Kozlov (KIT)\\n\\nPermission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \\\"Software\\\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:\\n\\nThe above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.\\n\\nTHE SOFTWARE IS PROVIDED \\\"AS IS\\\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\\n\\n\",\"content_hash\":\"4c2c763d64bbc7ef2e58b0ec6d06d90cee9755c9\",\"content_normalized\":\"permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'software'), to deal in the software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the software, and to permit persons to whom the software is furnished to do so, subject to the following conditions: the above copyright notice and this permission notice shall be included in all copies or substantial portions of the software. the software is provided 'as is', without warranty of any kind, express or implied, including but not limited to the warranties of merchantability, fitness for a particular purpose and noninfringement. in no event shall the authors or copyright holders be liable for any claim, damages or other liability, whether in an action of contract, tort or otherwise, arising from, out of or in connection with the software or the use or other dealings in the software.\",\"matcher\":{\"name\":\"exact\",\"confidence\":100},\"matched_license\":\"MIT\",\"attribution\":\"Copyright (c) 2018, V.Kozlov (KIT)\"}]}",
-                                    "url": "https://jenkins.eosc-synergy.eu/job/eosc-synergy-org/job/DEEP-OC-generic-dev.assess.sqaaas/job/master/4/execution/node/61/log?consoleFull"
+                                    "url": "https://jenkins.eosc-synergy.eu/job/eosc-synergy-org/job/DEEP-OC-generic-dev.assess.sqaaas/job/master/8/execution/node/70/log?consoleFull"
                                 },
                                 "level": "REQUIRED",
                                 "build_repo": "https://github.com/eosc-synergy/DEEP-OC-generic-dev.assess.sqaaas"
@@ -444,7 +660,7 @@
                                         "licensee detect . --confidence 60 --json"
                                     ],
                                     "stdout_text": "{\"licenses\":[{\"key\":\"mit\",\"spdx_id\":\"MIT\",\"meta\":{\"title\":\"MIT License\",\"source\":\"https://spdx.org/licenses/MIT.html\",\"description\":\"A short and simple permissive license with conditions only requiring preservation of copyright and license notices. Licensed works, modifications, and larger works may be distributed under different terms and without source code.\",\"how\":\"Create a text file (typically named LICENSE or LICENSE.txt) in the root of your source code and copy the text of the license into the file. Replace [year] with the current year and [fullname] with the name (or names) of the copyright holders.\",\"using\":{\"Babel\":\"https://github.com/babel/babel/blob/master/LICENSE\",\".NET\":\"https://github.com/dotnet/runtime/blob/main/LICENSE.TXT\",\"Rails\":\"https://github.com/rails/rails/blob/master/MIT-LICENSE\"},\"featured\":true,\"hidden\":false,\"nickname\":null,\"note\":null},\"url\":\"http://choosealicense.com/licenses/mit/\",\"rules\":{\"permissions\":[{\"tag\":\"commercial-use\",\"label\":\"Commercial use\",\"description\":\"The licensed material and derivatives may be used for commercial purposes.\"},{\"tag\":\"modifications\",\"label\":\"Modification\",\"description\":\"The licensed material may be modified.\"},{\"tag\":\"distribution\",\"label\":\"Distribution\",\"description\":\"The licensed material may be distributed.\"},{\"tag\":\"private-use\",\"label\":\"Private use\",\"description\":\"The licensed material may be used and modified in private.\"}],\"conditions\":[{\"tag\":\"include-copyright\",\"label\":\"License and copyright notice\",\"description\":\"A copy of the license and copyright notice must be included with the licensed material.\"}],\"limitations\":[{\"tag\":\"liability\",\"label\":\"Liability\",\"description\":\"This license includes a limitation of liability.\"},{\"tag\":\"warranty\",\"label\":\"Warranty\",\"description\":\"This license explicitly states that it does NOT provide any warranty.\"}]},\"fields\":[{\"name\":\"year\",\"description\":\"The current year\"},{\"name\":\"fullname\",\"description\":\"The full name or username of the repository owner\"}],\"other\":false,\"gpl\":false,\"lgpl\":false,\"cc\":false}],\"matched_files\":[{\"filename\":\"LICENSE\",\"content\":\"\\nThe MIT License (MIT)\\nCopyright (c) 2018, V.Kozlov (KIT)\\n\\nPermission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \\\"Software\\\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:\\n\\nThe above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.\\n\\nTHE SOFTWARE IS PROVIDED \\\"AS IS\\\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\\n\\n\",\"content_hash\":\"4c2c763d64bbc7ef2e58b0ec6d06d90cee9755c9\",\"content_normalized\":\"permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'software'), to deal in the software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the software, and to permit persons to whom the software is furnished to do so, subject to the following conditions: the above copyright notice and this permission notice shall be included in all copies or substantial portions of the software. the software is provided 'as is', without warranty of any kind, express or implied, including but not limited to the warranties of merchantability, fitness for a particular purpose and noninfringement. in no event shall the authors or copyright holders be liable for any claim, damages or other liability, whether in an action of contract, tort or otherwise, arising from, out of or in connection with the software or the use or other dealings in the software.\",\"matcher\":{\"name\":\"exact\",\"confidence\":100},\"matched_license\":\"MIT\",\"attribution\":\"Copyright (c) 2018, V.Kozlov (KIT)\"}]}",
-                                    "url": "https://jenkins.eosc-synergy.eu/job/eosc-synergy-org/job/DEEP-OC-generic-dev.assess.sqaaas/job/master/4/execution/node/61/log?consoleFull"
+                                    "url": "https://jenkins.eosc-synergy.eu/job/eosc-synergy-org/job/DEEP-OC-generic-dev.assess.sqaaas/job/master/8/execution/node/70/log?consoleFull"
                                 },
                                 "level": "REQUIRED",
                                 "build_repo": "https://github.com/eosc-synergy/DEEP-OC-generic-dev.assess.sqaaas"
@@ -580,7 +796,7 @@
                                         "licensee detect . --confidence 60 --json"
                                     ],
                                     "stdout_text": "{\"licenses\":[{\"key\":\"mit\",\"spdx_id\":\"MIT\",\"meta\":{\"title\":\"MIT License\",\"source\":\"https://spdx.org/licenses/MIT.html\",\"description\":\"A short and simple permissive license with conditions only requiring preservation of copyright and license notices. Licensed works, modifications, and larger works may be distributed under different terms and without source code.\",\"how\":\"Create a text file (typically named LICENSE or LICENSE.txt) in the root of your source code and copy the text of the license into the file. Replace [year] with the current year and [fullname] with the name (or names) of the copyright holders.\",\"using\":{\"Babel\":\"https://github.com/babel/babel/blob/master/LICENSE\",\".NET\":\"https://github.com/dotnet/runtime/blob/main/LICENSE.TXT\",\"Rails\":\"https://github.com/rails/rails/blob/master/MIT-LICENSE\"},\"featured\":true,\"hidden\":false,\"nickname\":null,\"note\":null},\"url\":\"http://choosealicense.com/licenses/mit/\",\"rules\":{\"permissions\":[{\"tag\":\"commercial-use\",\"label\":\"Commercial use\",\"description\":\"The licensed material and derivatives may be used for commercial purposes.\"},{\"tag\":\"modifications\",\"label\":\"Modification\",\"description\":\"The licensed material may be modified.\"},{\"tag\":\"distribution\",\"label\":\"Distribution\",\"description\":\"The licensed material may be distributed.\"},{\"tag\":\"private-use\",\"label\":\"Private use\",\"description\":\"The licensed material may be used and modified in private.\"}],\"conditions\":[{\"tag\":\"include-copyright\",\"label\":\"License and copyright notice\",\"description\":\"A copy of the license and copyright notice must be included with the licensed material.\"}],\"limitations\":[{\"tag\":\"liability\",\"label\":\"Liability\",\"description\":\"This license includes a limitation of liability.\"},{\"tag\":\"warranty\",\"label\":\"Warranty\",\"description\":\"This license explicitly states that it does NOT provide any warranty.\"}]},\"fields\":[{\"name\":\"year\",\"description\":\"The current year\"},{\"name\":\"fullname\",\"description\":\"The full name or username of the repository owner\"}],\"other\":false,\"gpl\":false,\"lgpl\":false,\"cc\":false}],\"matched_files\":[{\"filename\":\"LICENSE\",\"content\":\"\\nThe MIT License (MIT)\\nCopyright (c) 2018, V.Kozlov (KIT)\\n\\nPermission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \\\"Software\\\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:\\n\\nThe above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.\\n\\nTHE SOFTWARE IS PROVIDED \\\"AS IS\\\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\\n\\n\",\"content_hash\":\"4c2c763d64bbc7ef2e58b0ec6d06d90cee9755c9\",\"content_normalized\":\"permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'software'), to deal in the software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the software, and to permit persons to whom the software is furnished to do so, subject to the following conditions: the above copyright notice and this permission notice shall be included in all copies or substantial portions of the software. the software is provided 'as is', without warranty of any kind, express or implied, including but not limited to the warranties of merchantability, fitness for a particular purpose and noninfringement. in no event shall the authors or copyright holders be liable for any claim, damages or other liability, whether in an action of contract, tort or otherwise, arising from, out of or in connection with the software or the use or other dealings in the software.\",\"matcher\":{\"name\":\"exact\",\"confidence\":100},\"matched_license\":\"MIT\",\"attribution\":\"Copyright (c) 2018, V.Kozlov (KIT)\"}]}",
-                                    "url": "https://jenkins.eosc-synergy.eu/job/eosc-synergy-org/job/DEEP-OC-generic-dev.assess.sqaaas/job/master/4/execution/node/61/log?consoleFull"
+                                    "url": "https://jenkins.eosc-synergy.eu/job/eosc-synergy-org/job/DEEP-OC-generic-dev.assess.sqaaas/job/master/8/execution/node/70/log?consoleFull"
                                 },
                                 "level": "REQUIRED",
                                 "build_repo": "https://github.com/eosc-synergy/DEEP-OC-generic-dev.assess.sqaaas"
@@ -716,7 +932,7 @@
                                         "licensee detect . --confidence 60 --json"
                                     ],
                                     "stdout_text": "{\"licenses\":[{\"key\":\"mit\",\"spdx_id\":\"MIT\",\"meta\":{\"title\":\"MIT License\",\"source\":\"https://spdx.org/licenses/MIT.html\",\"description\":\"A short and simple permissive license with conditions only requiring preservation of copyright and license notices. Licensed works, modifications, and larger works may be distributed under different terms and without source code.\",\"how\":\"Create a text file (typically named LICENSE or LICENSE.txt) in the root of your source code and copy the text of the license into the file. Replace [year] with the current year and [fullname] with the name (or names) of the copyright holders.\",\"using\":{\"Babel\":\"https://github.com/babel/babel/blob/master/LICENSE\",\".NET\":\"https://github.com/dotnet/runtime/blob/main/LICENSE.TXT\",\"Rails\":\"https://github.com/rails/rails/blob/master/MIT-LICENSE\"},\"featured\":true,\"hidden\":false,\"nickname\":null,\"note\":null},\"url\":\"http://choosealicense.com/licenses/mit/\",\"rules\":{\"permissions\":[{\"tag\":\"commercial-use\",\"label\":\"Commercial use\",\"description\":\"The licensed material and derivatives may be used for commercial purposes.\"},{\"tag\":\"modifications\",\"label\":\"Modification\",\"description\":\"The licensed material may be modified.\"},{\"tag\":\"distribution\",\"label\":\"Distribution\",\"description\":\"The licensed material may be distributed.\"},{\"tag\":\"private-use\",\"label\":\"Private use\",\"description\":\"The licensed material may be used and modified in private.\"}],\"conditions\":[{\"tag\":\"include-copyright\",\"label\":\"License and copyright notice\",\"description\":\"A copy of the license and copyright notice must be included with the licensed material.\"}],\"limitations\":[{\"tag\":\"liability\",\"label\":\"Liability\",\"description\":\"This license includes a limitation of liability.\"},{\"tag\":\"warranty\",\"label\":\"Warranty\",\"description\":\"This license explicitly states that it does NOT provide any warranty.\"}]},\"fields\":[{\"name\":\"year\",\"description\":\"The current year\"},{\"name\":\"fullname\",\"description\":\"The full name or username of the repository owner\"}],\"other\":false,\"gpl\":false,\"lgpl\":false,\"cc\":false}],\"matched_files\":[{\"filename\":\"LICENSE\",\"content\":\"\\nThe MIT License (MIT)\\nCopyright (c) 2018, V.Kozlov (KIT)\\n\\nPermission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \\\"Software\\\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:\\n\\nThe above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.\\n\\nTHE SOFTWARE IS PROVIDED \\\"AS IS\\\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\\n\\n\",\"content_hash\":\"4c2c763d64bbc7ef2e58b0ec6d06d90cee9755c9\",\"content_normalized\":\"permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'software'), to deal in the software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the software, and to permit persons to whom the software is furnished to do so, subject to the following conditions: the above copyright notice and this permission notice shall be included in all copies or substantial portions of the software. the software is provided 'as is', without warranty of any kind, express or implied, including but not limited to the warranties of merchantability, fitness for a particular purpose and noninfringement. in no event shall the authors or copyright holders be liable for any claim, damages or other liability, whether in an action of contract, tort or otherwise, arising from, out of or in connection with the software or the use or other dealings in the software.\",\"matcher\":{\"name\":\"exact\",\"confidence\":100},\"matched_license\":\"MIT\",\"attribution\":\"Copyright (c) 2018, V.Kozlov (KIT)\"}]}",
-                                    "url": "https://jenkins.eosc-synergy.eu/job/eosc-synergy-org/job/DEEP-OC-generic-dev.assess.sqaaas/job/master/4/execution/node/61/log?consoleFull"
+                                    "url": "https://jenkins.eosc-synergy.eu/job/eosc-synergy-org/job/DEEP-OC-generic-dev.assess.sqaaas/job/master/8/execution/node/70/log?consoleFull"
                                 },
                                 "level": "REQUIRED",
                                 "build_repo": "https://github.com/eosc-synergy/DEEP-OC-generic-dev.assess.sqaaas"
@@ -832,6 +1048,92 @@
                 "success_subcriteria": 4
             }
         },
+        "QC.Sty": {
+            "valid": true,
+            "subcriteria": {
+                "QC.Sty01": {
+                    "description": "Is the software product following a style standard for Dockerfile files?",
+                    "requirement_level": "MUST",
+                    "hint": "Please check & solve the security weaknesses found by the linter tool",
+                    "evidence": [
+                        {
+                            "valid": true,
+                            "message": "Dockerfile files are compliant with hadolint standard",
+                            "plugin": {
+                                "name": "report2sqaaas-plugin-jenkins_exit_status",
+                                "version": "1.2.0"
+                            },
+                            "tool": {
+                                "name": "hadolint",
+                                "lang": "Dockerfile",
+                                "version": "v2.8.0-0-g398770f-dirty",
+                                "docker": {
+                                    "image": "hadolint/hadolint:2.8.0-alpine",
+                                    "reviewed": "2021-06-21"
+                                },
+                                "ci": {
+                                    "name": "QC.Sty github.com/deephdc/DEEP-OC-generic-dev hadolint",
+                                    "status": "SUCCESS",
+                                    "stdout_command": [
+                                        "hadolint Dockerfile --failure-threshold error"
+                                    ],
+                                    "stdout_text": "Dockerfile:22 DL3008 \u001b[1m\u001b[93mwarning\u001b[0m: Pin versions in apt get install. Instead of `apt-get install <package>` use `apt-get install <package>=<version>`\nDockerfile:22 DL4006 \u001b[1m\u001b[93mwarning\u001b[0m: Set the SHELL option -o pipefail before RUN with a pipe in it. If you are using /bin/sh in an alpine image or if your shell is symlinked to busybox then consider explicitly setting your SHELL to /bin/ash, or disable this check\nDockerfile:66 DL3014 \u001b[1m\u001b[93mwarning\u001b[0m: Use the `-y` switch to avoid manual input `apt-get -y install <package>`\nDockerfile:66 DL3047 \u001b[92minfo\u001b[0m: Avoid use of wget without progress bar. Use `wget --progress=dot:giga <url>`.Or consider using `-q` or `-nv` (shorthands for `--quiet` or `--no-verbose`).\nDockerfile:66 DL3015 \u001b[92minfo\u001b[0m: Avoid additional packages by specifying `--no-install-recommends`\nDockerfile:66 DL4001 \u001b[1m\u001b[93mwarning\u001b[0m: Either use Wget or Curl but not both\nDockerfile:96 DL4006 \u001b[1m\u001b[93mwarning\u001b[0m: Set the SHELL option -o pipefail before RUN with a pipe in it. If you are using /bin/sh in an alpine image or if your shell is symlinked to busybox then consider explicitly setting your SHELL to /bin/ash, or disable this check\nDockerfile:96 DL4001 \u001b[1m\u001b[93mwarning\u001b[0m: Either use Wget or Curl but not both\nDockerfile:107 DL3013 \u001b[1m\u001b[93mwarning\u001b[0m: Pin versions in pip. Instead of `pip install <package>` use `pip install <package>==<version>` or `pip install --requirement <requirements file>`",
+                                    "url": "https://jenkins.eosc-synergy.eu/job/eosc-synergy-org/job/DEEP-OC-generic-dev.assess.sqaaas/job/master/8/execution/node/79/log?consoleFull"
+                                },
+                                "level": "REQUIRED",
+                                "build_repo": "https://github.com/eosc-synergy/DEEP-OC-generic-dev.assess.sqaaas"
+                            },
+                            "standard": {
+                                "title": "A set of Common Software Quality Assurance Baseline Criteria for Research Projects",
+                                "version": "v4.0",
+                                "url": "https://github.com/indigo-dc/sqa-baseline/releases/tag/v4.0"
+                            },
+                            "data_unstructured": {}
+                        },
+                        {
+                            "valid": true,
+                            "message": "JSON files are compliant with jsonlint standard",
+                            "plugin": {
+                                "name": "report2sqaaas-plugin-jenkins_exit_status",
+                                "version": "1.2.0"
+                            },
+                            "tool": {
+                                "name": "jsonlint",
+                                "lang": "JSON",
+                                "version": "1.6.3",
+                                "docker": {
+                                    "dockerfile": "QC.Sty/jsonlint/Dockerfile",
+                                    "reviewed": "2021-11-23"
+                                },
+                                "ci": {
+                                    "name": "QC.Sty github.com/deephdc/DEEP-OC-generic-dev jsonlint",
+                                    "status": "SUCCESS",
+                                    "stdout_command": [
+                                        "jsonlint-cli \"**/*.json\""
+                                    ],
+                                    "stdout_text": "",
+                                    "url": "https://jenkins.eosc-synergy.eu/job/eosc-synergy-org/job/DEEP-OC-generic-dev.assess.sqaaas/job/master/8/execution/node/88/log?consoleFull"
+                                },
+                                "level": "REQUIRED",
+                                "build_repo": "https://github.com/eosc-synergy/DEEP-OC-generic-dev.assess.sqaaas"
+                            },
+                            "standard": {
+                                "title": "A set of Common Software Quality Assurance Baseline Criteria for Research Projects",
+                                "version": "v4.0",
+                                "url": "https://github.com/indigo-dc/sqa-baseline/releases/tag/v4.0"
+                            },
+                            "data_unstructured": {}
+                        }
+                    ],
+                    "valid": true
+                }
+            },
+            "coverage": {
+                "percentage": 100,
+                "total_subcriteria": 1,
+                "success_subcriteria": 1
+            }
+        },
         "QC.Ver": {
             "valid": true,
             "subcriteria": {
@@ -861,8 +1163,8 @@
                                     "stdout_command": [
                                         "get_git_tags.py"
                                     ],
-                                    "stdout_text": "['1.0.0']",
-                                    "url": "https://jenkins.eosc-synergy.eu/job/eosc-synergy-org/job/DEEP-OC-generic-dev.assess.sqaaas/job/master/4/execution/node/70/log?consoleFull"
+                                    "stdout_text": "['2.1.2', '2.1.1', '2.1.0', '2.0.0', '1.0.0']",
+                                    "url": "https://jenkins.eosc-synergy.eu/job/eosc-synergy-org/job/DEEP-OC-generic-dev.assess.sqaaas/job/master/8/execution/node/97/log?consoleFull"
                                 },
                                 "level": "REQUIRED",
                                 "build_repo": "https://github.com/eosc-synergy/DEEP-OC-generic-dev.assess.sqaaas"
@@ -873,6 +1175,10 @@
                                 "url": "https://github.com/indigo-dc/sqa-baseline/releases/tag/v4.0"
                             },
                             "data_unstructured": [
+                                "2.1.2",
+                                "2.1.1",
+                                "2.1.0",
+                                "2.0.0",
                                 "1.0.0"
                             ]
                         }
@@ -886,7 +1192,7 @@
                     "evidence": [
                         {
                             "valid": true,
-                            "message": "Latest release tag 1.0.0 is SemVer compliant",
+                            "message": "Latest release tag 2.1.2 is SemVer compliant",
                             "plugin": {
                                 "name": "report2sqaaas-plugin-is_semver",
                                 "version": "1.0.0"
@@ -905,8 +1211,8 @@
                                     "stdout_command": [
                                         "get_git_tags.py"
                                     ],
-                                    "stdout_text": "['1.0.0']",
-                                    "url": "https://jenkins.eosc-synergy.eu/job/eosc-synergy-org/job/DEEP-OC-generic-dev.assess.sqaaas/job/master/4/execution/node/70/log?consoleFull"
+                                    "stdout_text": "['2.1.2', '2.1.1', '2.1.0', '2.0.0', '1.0.0']",
+                                    "url": "https://jenkins.eosc-synergy.eu/job/eosc-synergy-org/job/DEEP-OC-generic-dev.assess.sqaaas/job/master/8/execution/node/97/log?consoleFull"
                                 },
                                 "level": "REQUIRED",
                                 "build_repo": "https://github.com/eosc-synergy/DEEP-OC-generic-dev.assess.sqaaas"
@@ -917,6 +1223,10 @@
                                 "url": "https://github.com/indigo-dc/sqa-baseline/releases/tag/v4.0"
                             },
                             "data_unstructured": [
+                                "2.1.2",
+                                "2.1.1",
+                                "2.1.0",
+                                "2.0.0",
                                 "1.0.0"
                             ]
                         }
@@ -949,8 +1259,8 @@
                                     "stdout_command": [
                                         "get_git_tags.py"
                                     ],
-                                    "stdout_text": "['1.0.0']",
-                                    "url": "https://jenkins.eosc-synergy.eu/job/eosc-synergy-org/job/DEEP-OC-generic-dev.assess.sqaaas/job/master/4/execution/node/70/log?consoleFull"
+                                    "stdout_text": "['2.1.2', '2.1.1', '2.1.0', '2.0.0', '1.0.0']",
+                                    "url": "https://jenkins.eosc-synergy.eu/job/eosc-synergy-org/job/DEEP-OC-generic-dev.assess.sqaaas/job/master/8/execution/node/97/log?consoleFull"
                                 },
                                 "level": "REQUIRED",
                                 "build_repo": "https://github.com/eosc-synergy/DEEP-OC-generic-dev.assess.sqaaas"
@@ -961,6 +1271,10 @@
                                 "url": "https://github.com/indigo-dc/sqa-baseline/releases/tag/v4.0"
                             },
                             "data_unstructured": [
+                                "2.1.2",
+                                "2.1.1",
+                                "2.1.0",
+                                "2.0.0",
                                 "1.0.0"
                             ]
                         }
@@ -1007,28 +1321,6 @@
                         {
                             "valid": false,
                             "message": "No matching files found for language <Python> in repository searching by extensions or filenames\nNo matching files found for language <Go> in repository searching by extensions or filenames"
-                        }
-                    ],
-                    "required_for_next_level_badge": false
-                }
-            },
-            "coverage": {
-                "percentage": 0,
-                "total_subcriteria": 1,
-                "success_subcriteria": 0
-            }
-        },
-        "QC.Sty": {
-            "valid": false,
-            "subcriteria": {
-                "QC.Sty01": {
-                    "description": "Is the software product following a style standard for {lang_name} files?",
-                    "valid": false,
-                    "hint": "Please check & solve the security weaknesses found by the linter tool",
-                    "evidence": [
-                        {
-                            "valid": false,
-                            "message": "No matching files found for language <Dockerfile> in repository searching by extensions or filenames\nNo matching files found for language <JSON> in repository searching by extensions or filenames\nNo matching files found for language <Python> in repository searching by extensions or filenames\nNo matching files found for language <Go> in repository searching by extensions or filenames\nNo matching files found for language <Ruby> in repository searching by extensions or filenames\nNo matching files found for language <Java> in repository searching by extensions or filenames"
                         }
                     ],
                     "required_for_next_level_badge": false
@@ -1101,25 +1393,25 @@
                 "gold": {
                     "to_fulfill": [
                         "QC.Acc",
-                        "QC.Sty",
+                        "QC.Sec",
+                        "QC.Uni",
                         "QC.Doc",
                         "QC.Lic",
-                        "QC.Uni",
                         "QC.Ver",
-                        "QC.Sec",
+                        "QC.Sty",
                         "QC.Met"
                     ],
                     "missing": [
-                        "QC.Sty",
-                        "QC.Uni",
-                        "QC.Met",
                         "QC.Sec",
-                        "QC.Doc"
+                        "QC.Uni",
+                        "QC.Doc",
+                        "QC.Met"
                     ],
                     "fulfilled": [
                         "QC.Acc",
                         "QC.Lic",
-                        "QC.Ver"
+                        "QC.Ver",
+                        "QC.Sty"
                     ]
                 }
             },
