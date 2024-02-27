@@ -15,42 +15,52 @@ sqa_criteria:
     repos:
       github.com/deephdc/DEEP-OC-generic-dev git:
         commands:
-        - /usr/bin/env sh .sqa/script.thirsty-coral-rat.sh
-        container: qc.acc_bluesy-brown-boar
+        - /usr/bin/env sh .sqa/script.sleazy-carmine-penguin.sh
+        container: qc.acc_wiggy-charcoal-flounder
   QC.Doc:
     repos:
       github.com/deephdc/DEEP-OC-generic-dev find_doc_files.py:
         commands:
-        - /usr/bin/env sh .sqa/script.goopy-amber-worm.sh
-        container: qc.doc_craggy-orange-angelfish
+        - /usr/bin/env sh .sqa/script.homely-thistle-hamster.sh
+        container: qc.doc_gloppy-myrtle-terrier
       github.com/deephdc/DEEP-OC-generic-dev git:
         commands:
-        - /usr/bin/env sh .sqa/script.ready-brown-goat.sh
-        container: qc.doc_skimpy-asparagus-gopher
+        - /usr/bin/env sh .sqa/script.lanky-salmon-falcon.sh
+        container: qc.doc_snoopy-wisteria-butterfly
       github.com/deephdc/DEEP-OC-generic-dev markdownlint:
         commands:
-        - /usr/bin/env sh .sqa/script.crabby-cornflower-llama.sh
-        container: qc.doc_seedy-grey-dunker
+        - /usr/bin/env sh .sqa/script.snazzy-cardinal-bison.sh
+        container: qc.doc_gamy-bronze-hippopotamus
   QC.Lic:
     repos:
       github.com/deephdc/DEEP-OC-generic-dev licensee:
         commands:
-        - /usr/bin/env sh .sqa/script.stinky-pumpkin-gharial.sh
-        container: qc.lic_hasty-persimmon-booby
+        - /usr/bin/env sh .sqa/script.geeky-coral-chipmunk.sh
+        container: qc.lic_chewy-saffron-ibis
+  QC.Met:
+    repos:
+      github.com/deephdc/DEEP-OC-generic-dev cff-converter-python:
+        commands:
+        - /usr/bin/env sh .sqa/script.paltry-magnolia-jellyfish.sh
+        container: qc.met_gamy-tangerine-millipede
+      github.com/deephdc/DEEP-OC-generic-dev validate_codemeta:
+        commands:
+        - /usr/bin/env sh .sqa/script.shabby-linen-starfish.sh
+        container: qc.met_chewy-sapphire-deer
   QC.Sty:
     repos:
       github.com/deephdc/DEEP-OC-generic-dev hadolint:
         commands:
-        - /usr/bin/env sh .sqa/script.cheeky-cyan-fowl.sh
-        container: qc.sty_wheezy-blue-zorse
+        - /usr/bin/env sh .sqa/script.cozy-sapphire-goose.sh
+        container: qc.sty_silly-copper-liger
       github.com/deephdc/DEEP-OC-generic-dev jsonlint:
         commands:
-        - /usr/bin/env sh .sqa/script.goopy-indigo-bombay.sh
-        container: qc.sty_scanty-cyan-koala
+        - /usr/bin/env sh .sqa/script.messy-periwinkle-alligator.sh
+        container: qc.sty_pokey-ochre-capuchin
   QC.Ver:
     repos:
       github.com/deephdc/DEEP-OC-generic-dev get_git_tags.py:
         commands:
-        - /usr/bin/env sh .sqa/script.jumpy-chocolate-okapi.sh
-        container: qc.ver_whiny-azure-fish
+        - /usr/bin/env sh .sqa/script.tasty-razzmatazz-bear.sh
+        container: qc.ver_tasty-orchid-tiger
 timeout: 5400
